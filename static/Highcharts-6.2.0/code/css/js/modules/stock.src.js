@@ -3156,7 +3156,7 @@
 
 		    /**
 		     * The shape of the marker. Can be one of "flag", "circlepin", "squarepin",
-		     * or an image of the format `url(/path-to-image.jpg)`. Individual
+		     * or an icon_repo of the format `url(/path-to-icon_repo.jpg)`. Individual
 		     * shapes can also be set for each point.
 		     *
 		     * @validvalue ["flag", "circlepin", "squarepin"]
@@ -4859,7 +4859,7 @@
 		             * right.
 		             *
 		             * Additionally, the URL to a graphic can be given on this form:
-		             * `url(graphic.png)`. Note that for the image to be applied to
+		             * `url(graphic.png)`. Note that for the icon_repo to be applied to
 		             * exported charts, its URL needs to be accessible by the export
 		             * server.
 		             *

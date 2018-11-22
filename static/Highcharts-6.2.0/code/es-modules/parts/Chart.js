@@ -1698,7 +1698,7 @@ extend(Chart.prototype, /** @lends Highcharts.Chart.prototype */ {
             })
             .shadow(optionsChart.plotShadow);
 
-        // Create the background image
+        // Create the background icon_repo
         if (plotBackgroundImage) {
             if (!plotBGImage) {
                 chart.plotBGImage = renderer.image(

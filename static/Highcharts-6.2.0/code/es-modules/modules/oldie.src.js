@@ -40,7 +40,7 @@ var VMLRenderer,
 
 
 /**
- * Path to the pattern image required by VML browsers in order to
+ * Path to the pattern icon_repo required by VML browsers in order to
  * draw radial gradients.
  *
  * @type {String}
@@ -230,7 +230,7 @@ if (!svg) {
      */
     Chart.prototype.ieSanitizeSVG = function (svg) {
         svg = svg
-            .replace(/<IMG /g, '<image ')
+            .replace(/<IMG /g, '<icon_repo ')
             .replace(/<(\/?)TITLE>/g, '<$1title>')
             .replace(/height=([^" ]+)/g, 'height="$1"')
             .replace(/width=([^" ]+)/g, 'width="$1"')
@@ -1321,7 +1321,7 @@ if (!svg) {
         },
 
         /**
-         * VML override to create a regular HTML image
+         * VML override to create a regular HTML icon_repo
          * @param {String} src
          * @param {Number} x
          * @param {Number} y

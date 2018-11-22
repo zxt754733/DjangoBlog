@@ -21,7 +21,7 @@ var addEvent = Highcharts.addEvent,
     domurl = win.URL || win.webkitURL || win,
     isMSBrowser = /Edge\/|Trident\/|MSIE /.test(nav.userAgent),
     isEdgeBrowser = /Edge\/\d+/.test(nav.userAgent),
-    // Milliseconds to defer image load event handlers to offset IE bug
+    // Milliseconds to defer icon_repo load event handlers to offset IE bug
     loadEventDeferDelay = isMSBrowser ? 150 : 0;
 
 // Dummy object so we can reuse our canvas-tools.js without errors
@@ -131,16 +131,16 @@ Highcharts.svgToDataUrl = function (svg) {
         // leading to gradients not working using Blobs (#4550)
         if (!webKit && nav.userAgent.toLowerCase().indexOf('firefox') < 0) {
             return domurl.createObjectURL(new win.Blob([svg], {
-                type: 'image/svg+xml;charset-utf-16'
+                type: 'icon_repo/svg+xml;charset-utf-16'
             }));
         }
     } catch (e) {
         // Ignore
     }
-    return 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
+    return 'data:icon_repo/svg+xml;charset=UTF-8,' + encodeURIComponent(svg);
 };
 
-// Get data:URL from image URL
+// Get data:URL from icon_repo URL
 // Pass in callbacks to handle results. finallyCallback is always called at the
 // end of the process. Supplying this callback is optional. All callbacks
 // receive four arguments: imageURL, imageType, callbackArgs and scale.
@@ -204,7 +204,7 @@ Highcharts.imageToDataUrl = function (
                         );
                     }
                 }
-            // IE bug where image is not always ready despite calling load
+            // IE bug where icon_repo is not always ready despite calling load
             // event.
             }, loadEventDeferDelay);
         },
@@ -216,12 +216,12 @@ Highcharts.imageToDataUrl = function (
             }
         };
 
-    // This is called on load if the image drawing to canvas failed with a
+    // This is called on load if the icon_repo drawing to canvas failed with a
     // security error. We retry the drawing with crossOrigin set to Anonymous.
     taintedHandler = function () {
         img = new win.Image();
         taintedHandler = taintedCallback;
-        // Must be set prior to loading image source
+        // Must be set prior to loading icon_repo source
         img.crossOrigin = 'Anonymous';
         img.onload = loadHandler;
         img.onerror = errorHandler;
@@ -234,12 +234,12 @@ Highcharts.imageToDataUrl = function (
 };
 
 /**
- * Get data URL to an image of an SVG and call download on it
+ * Get data URL to an icon_repo of an SVG and call download on it
  *
  * options object:
  * - filename: Name of resulting downloaded file without extension
  * - type: File type of resulting download
- * - scale: Scaling factor of downloaded image compared to source
+ * - scale: Scaling factor of downloaded icon_repo compared to source
  * - libURL: URL pointing to location of dependency scripts to download on
  *   demand
  */
@@ -449,7 +449,7 @@ Highcharts.downloadSVGLocal = function (
             },
             // No canvas support
             failCallback,
-            // Failed to load image
+            // Failed to load icon_repo
             failCallback,
             // Finally
             function () {
@@ -483,18 +483,18 @@ Highcharts.Chart.prototype.getSVGForLocalExport = function (
         sanitize = function (svg) {
             return chart.sanitizeSVG(svg, chartCopyOptions);
         },
-        // Success handler, we converted image to base64!
+        // Success handler, we converted icon_repo to base64!
         embeddedSuccess = function (imageURL, imageType, callbackArgs) {
             ++imagesEmbedded;
 
-            // Change image href in chart copy
+            // Change icon_repo href in chart copy
             callbackArgs.imageElement.setAttributeNS(
                 'http://www.w3.org/1999/xlink',
                 'href',
                 imageURL
             );
 
-            // When done with last image we have our SVG
+            // When done with last icon_repo we have our SVG
             if (imagesEmbedded === images.length) {
                 successCallback(sanitize(chartCopyContainer.innerHTML));
             }
@@ -543,7 +543,7 @@ Highcharts.Chart.prototype.getSVGForLocalExport = function (
 };
 
 /**
- * Exporting and offline-exporting modules required. Export a chart to an image
+ * Exporting and offline-exporting modules required. Export a chart to an icon_repo
  * locally in the user's browser.
  *
  * @param  {Object} exportingOptions

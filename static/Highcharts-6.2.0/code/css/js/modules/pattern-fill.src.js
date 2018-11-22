@@ -74,7 +74,7 @@
 		/**
 		 * Set dimensions on pattern from point. This function will set internal
 		 * pattern._width/_height properties if width and height are not both already
-		 * set. We only do this on image patterns. The _width/_height properties are
+		 * set. We only do this on icon_repo patterns. The _width/_height properties are
 		 * set to the size of the bounding box of the point, optionally taking aspect
 		 * ratio into account. If only one of width or height are supplied as options,
 		 * the undefined option is calculated as above.
@@ -157,22 +157,22 @@
 		/**
 		 * @typedef {Object} PatternOptions
 		 * @property {Object} pattern Holds a pattern definition.
-		 * @property {String} pattern.image URL to an image to use as the pattern.
+		 * @property {String} pattern.icon_repo URL to an icon_repo to use as the pattern.
 		 * @property {Number} pattern.width Width of the pattern. For images this is
 		 *  automatically set to the width of the element bounding box if not supplied.
-		 *  For non-image patterns the default is 32px. Note that automatic resizing of
-		 *  image patterns to fill a bounding box dynamically is only supported for
+		 *  For non-icon_repo patterns the default is 32px. Note that automatic resizing of
+		 *  icon_repo patterns to fill a bounding box dynamically is only supported for
 		 *  patterns with an automatically calculated ID.
 		 * @property {Number} pattern.height Analogous to pattern.width.
 		 * @property {Number} pattern.aspectRatio For automatically calculated width and
-		 *  height on images, it is possible to set an aspect ratio. The image will be
+		 *  height on images, it is possible to set an aspect ratio. The icon_repo will be
 		 *  zoomed to fill the bounding box, maintaining the aspect ratio defined.
 		 * @property {Number} pattern.x Horizontal offset of the pattern. Defaults to 0.
 		 * @property {Number} pattern.y Vertical offset of the pattern. Defaults to 0.
 		 * @property {Object|String} pattern.path Either an SVG path as string, or an
 		 *  object. As an object, supply the path string in the `path.d` property. Other
 		 *  supported properties are standard SVG attributes like `path.stroke` and
-		 *  `path.fill`. If a path is supplied for the pattern, the `image` property is
+		 *  `path.fill`. If a path is supplied for the pattern, the `icon_repo` property is
 		 *  ignored.
 		 * @property {String} pattern.color Pattern color, used as default path stroke.
 		 * @property {Number} pattern.opacity Opacity of the pattern as a float value
@@ -181,7 +181,7 @@
 		 *    automatically computed if not added, and identical patterns are reused. To
 		 *    refer to an existing pattern for a Highcharts color, use
 		 *    `color: "url(#pattern-id)"`.
-		 * @property {Object|Boolean} animation Animation options for the image pattern
+		 * @property {Object|Boolean} animation Animation options for the icon_repo pattern
 		 *  loading.
 		 *
 		 * @example
@@ -202,7 +202,7 @@
 		 * @sample highcharts/series/pattern-fill-area/
 		 *         Define a custom path pattern
 		 * @sample highcharts/series/pattern-fill-pie/
-		 *         Default patterns and a custom image pattern
+		 *         Default patterns and a custom icon_repo pattern
 		 * @sample maps/demo/pattern-fill-map/
 		 *         Custom images on map
 		 */
@@ -414,7 +414,7 @@
 		        // Real pattern. Add it and set the color value to be a reference.
 
 		        // Force Hash-based IDs for legend items, as they are drawn before
-		        // point render, meaning they are drawn before autocalculated image
+		        // point render, meaning they are drawn before autocalculated icon_repo
 		        // width/heights. We don't want them to highjack the width/height for
 		        // this ID if it is defined by users.
 		        forceHashId = element.parentNode &&

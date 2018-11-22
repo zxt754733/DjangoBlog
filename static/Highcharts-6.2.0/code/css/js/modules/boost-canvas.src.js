@@ -101,7 +101,7 @@
 
 		        /**
 		         * Create a hidden canvas to draw the graph on. The contents is later
-		         * copied over to an SVG image element.
+		         * copied over to an SVG icon_repo element.
 		         */
 		        getContext: function () {
 		            var chart = this.chart,
@@ -192,7 +192,7 @@
 		        },
 
 		        /**
-		         * Draw the canvas image inside an SVG image
+		         * Draw the canvas icon_repo inside an SVG icon_repo
 		         */
 		        canvasToSVG: function () {
 		            if (!this.chart.isChartSeriesBoosting()) {

@@ -1348,12 +1348,12 @@ H.defaultOptions = {
          */
 
         /**
-         * The URL for an image to use as the plot background. To set an image
-         * as the background for the entire chart, set a CSS background image
-         * to the container element. Note that for the image to be applied to
+         * The URL for an icon_repo to use as the plot background. To set an icon_repo
+         * as the background for the entire chart, set a CSS background icon_repo
+         * to the container element. Note that for the icon_repo to be applied to
          * exported charts, its URL needs to be accessible by the export server.
          *
-         * @see In styled mode, a plot background image can be set with the
+         * @see In styled mode, a plot background icon_repo can be set with the
          *      `.highcharts-plot-background` class and a [custom pattern](
          *      https://www.highcharts.com/docs/chart-design-and-style/
          *      gradients-shadows-and-patterns).

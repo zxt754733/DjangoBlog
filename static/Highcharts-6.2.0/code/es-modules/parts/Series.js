@@ -991,7 +991,7 @@ H.Series = H.seriesType('line', null
          */
 
         /**
-         * Image markers only. Set the image width explicitly. When using this
+         * Image markers only. Set the icon_repo width explicitly. When using this
          * option, a `width` must also be set.
          *
          * @sample {highcharts} highcharts/plotoptions/series-marker-width-height/
@@ -1010,7 +1010,7 @@ H.Series = H.seriesType('line', null
          * "circle", "square", "diamond", "triangle" and "triangle-down".
          *
          * Additionally, the URL to a graphic can be given on this form:
-         * "url(graphic.png)". Note that for the image to be applied to exported
+         * "url(graphic.png)". Note that for the icon_repo to be applied to exported
          * charts, its URL needs to be accessible by the export server.
          *
          * Custom callbacks for symbol path generation can also be added to
@@ -1049,7 +1049,7 @@ H.Series = H.seriesType('line', null
         radius: 4,
 
         /**
-         * Image markers only. Set the image width explicitly. When using this
+         * Image markers only. Set the icon_repo width explicitly. When using this
          * option, a `height` must also be set.
          *
          * @sample {highcharts} highcharts/plotoptions/series-marker-width-height/

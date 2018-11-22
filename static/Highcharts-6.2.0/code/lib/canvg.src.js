@@ -2380,7 +2380,7 @@
 		}
 		svg.Element.a.prototype = new svg.Element.TextElementBase;
 
-		// image element
+		// icon_repo element
 		svg.Element.image = function(node) {
 			this.base = svg.Element.RenderedElementBase;
 			this.base(node);
@@ -2396,7 +2396,7 @@
 				if (svg.opts['useCORS'] == true) { this.img.crossOrigin = 'Anonymous'; }
 				var self = this;
 				this.img.onload = function() { self.loaded = true; }
-				this.img.onerror = function() { svg.log('ERROR: image "' + href + '" not found'); self.loaded = true; }
+				this.img.onerror = function() { svg.log('ERROR: icon_repo "' + href + '" not found'); self.loaded = true; }
 				this.img.src = href;
 			}
 			else {

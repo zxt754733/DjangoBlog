@@ -51,20 +51,20 @@ extend(defaultOptions.lang, {
      * Exporting module only. The text for the PNG download menu item.
      *
      * @type {String}
-     * @default Download PNG image
+     * @default Download PNG icon_repo
      * @since 2.0
      * @apioption lang.downloadPNG
      */
-    downloadPNG: 'Download PNG image',
+    downloadPNG: 'Download PNG icon_repo',
     /**
      * Exporting module only. The text for the JPEG download menu item.
      *
      * @type {String}
-     * @default Download JPEG image
+     * @default Download JPEG icon_repo
      * @since 2.0
      * @apioption lang.downloadJPEG
      */
-    downloadJPEG: 'Download JPEG image',
+    downloadJPEG: 'Download JPEG icon_repo',
     /**
      * Exporting module only. The text for the PDF download menu item.
      *
@@ -78,11 +78,11 @@ extend(defaultOptions.lang, {
      * Exporting module only. The text for the SVG download menu item.
      *
      * @type {String}
-     * @default Download SVG vector image
+     * @default Download SVG vector icon_repo
      * @since 2.0
      * @apioption lang.downloadSVG
      */
-    downloadSVG: 'Download SVG vector image',
+    downloadSVG: 'Download SVG vector icon_repo',
     /**
      * Exporting module menu. The tooltip title for the context menu holding
      * print and export menu items.
@@ -252,7 +252,7 @@ defaultOptions.exporting = {
 
     /**
      * Experimental setting to allow HTML inside the chart (added through
-     * the `useHTML` options), directly in the exported image. This allows
+     * the `useHTML` options), directly in the exported icon_repo. This allows
      * you to preserve complicated HTML structures like tables or bi-directional
      * text in exported charts.
      *
@@ -314,7 +314,7 @@ defaultOptions.exporting = {
      * Whether or not to fall back to the export server if the offline-exporting
      * module is unable to export the chart on the client side. This happens for
      * certain browsers, and certain features (e.g.
-     * [allowHTML](#exporting.allowHTML)), depending on the image type exporting
+     * [allowHTML](#exporting.allowHTML)), depending on the icon_repo type exporting
      * to. For very complex charts, it is possible that export can fail in
      * browsers that don't support Blob objects, due to data URL length limits.
      * It is recommended to define the [exporting.error](#exporting.error)
@@ -341,7 +341,7 @@ defaultOptions.exporting = {
     /**
      * An object containing additional attributes for the POST form that
      * sends the SVG to the export server. For example, a `target` can be
-     * set to make sure the generated image is received in another frame,
+     * set to make sure the generated icon_repo is received in another frame,
      *  or a custom `enctype` or `encoding` can be set.
      *
      * @type {Object}
@@ -373,7 +373,7 @@ defaultOptions.exporting = {
 
     /**
      * The width of the original chart when exported, unless an explicit
-     * [chart.width](#chart.width) is set. The width exported raster image
+     * [chart.width](#chart.width) is set. The width exported raster icon_repo
      * is then multiplied by [scale](#exporting.scale).
      *
      * @type {Number}
@@ -402,16 +402,16 @@ defaultOptions.exporting = {
 
     /**
      * Default MIME type for exporting if `chart.exportChart()` is called
-     * without specifying a `type` option. Possible values are `image/png`,
-     *  `image/jpeg`, `application/pdf` and `image/svg+xml`.
+     * without specifying a `type` option. Possible values are `icon_repo/png`,
+     *  `icon_repo/jpeg`, `application/pdf` and `icon_repo/svg+xml`.
      *
-     * @validvalue ["image/png", "image/jpeg", "application/pdf", "image/svg+xml"]
+     * @validvalue ["icon_repo/png", "icon_repo/jpeg", "application/pdf", "icon_repo/svg+xml"]
      * @since 2.0
      */
     type: 'image/png',
 
     /**
-     * The URL for the server module converting the SVG string to an image
+     * The URL for the server module converting the SVG string to an icon_repo
      * format. By default this points to Highchart's free web service.
      *
      * @type {String}
@@ -433,7 +433,7 @@ defaultOptions.exporting = {
     printMaxWidth: 780,
 
     /**
-     * Defines the scale or zoom factor for the exported image compared
+     * Defines the scale or zoom factor for the exported icon_repo compared
      * to the on-screen display. While for instance a 600px wide chart
      * may look good on a website, it will look bad in print. The default
      * scale of 2 makes this chart export to a 1200px PNG or JPG.
@@ -968,9 +968,9 @@ extend(Chart.prototype, /** @lends Highcharts.Chart.prototype */ {
      * @param  {String} exportingOptions.url
      *         The URL for the server module to do the conversion.
      * @param  {Number} exportingOptions.width
-     *         The width of the PNG or JPG image generated on the server.
+     *         The width of the PNG or JPG icon_repo generated on the server.
      * @param  {String} exportingOptions.type
-     *         The MIME type of the converted image.
+     *         The MIME type of the converted icon_repo.
      * @param  {Number} exportingOptions.sourceWidth
      *         The pixel width of the source (in-page) chart.
      * @param  {Number} exportingOptions.sourceHeight
@@ -1340,7 +1340,7 @@ extend(Chart.prototype, /** @lends Highcharts.Chart.prototype */ {
                     btnOptions.symbolY - (symbolSize / 2),
                     symbolSize,
                     symbolSize,
-                    // If symbol is an image, scale it (#7957)
+                    // If symbol is an icon_repo, scale it (#7957)
                     {
                         width: symbolSize,
                         height: symbolSize

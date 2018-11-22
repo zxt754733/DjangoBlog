@@ -238,7 +238,7 @@ function Ellipse(rx, ry, ax) {
 //    -         -
 //
 Ellipse.prototype.transform = function (m) {
-  // We consider the current ellipse as image of the unit circle
+  // We consider the current ellipse as icon_repo of the unit circle
   // by first scale(rx,ry) and then rotate(ax) ...
   // So we apply ma =  m x rotate(ax) x scale(rx,ry) to the unit circle.
   var c = Math.cos(this.ax * torad), s = Math.sin(this.ax * torad);
@@ -251,7 +251,7 @@ Ellipse.prototype.transform = function (m) {
 
   // ma * transpose(ma) = [ J L ]
   //                      [ L K ]
-  // L is calculated later (if the image is not a circle)
+  // L is calculated later (if the icon_repo is not a circle)
   var J = ma[0]*ma[0] + ma[2]*ma[2],
       K = ma[1]*ma[1] + ma[3]*ma[3];
 
@@ -262,7 +262,7 @@ Ellipse.prototype.transform = function (m) {
   // the "mean eigenvalue"
   var JK = (J + K) / 2;
 
-  // check if the image is (almost) a circle
+  // check if the icon_repo is (almost) a circle
   if (D < epsilon * JK) {
     // if it is
     this.rx = this.ry = Math.sqrt(JK);
@@ -1792,7 +1792,7 @@ SOFTWARE.
 
 /**
  * Renders an svg element to a jsPDF document.
- * For accurate results a DOM document is required (mainly used for text size measurement and image format conversion)
+ * For accurate results a DOM document is required (mainly used for text size measurement and icon_repo format conversion)
  * @param element {HTMLElement} The svg element, which will be cloned, so the original stays unchanged.
  * @param pdf {jsPDF} The jsPDF object.
  * @param options {object} An object that may contain render options. Currently supported are:
@@ -2629,11 +2629,11 @@ SOFTWARE.
     }
   };
 
-  // draws an image
+  // draws an icon_repo
   var image = function (node, svgIdPrefix) {
     var imageUrl = node.getAttribute("xlink:href") || node.getAttribute("href");
 
-    var svgDataUrlHeader = "data:image/svg+xml;base64,";
+    var svgDataUrlHeader = "data:icon_repo/svg+xml;base64,";
     if (imageUrl.indexOf(svgDataUrlHeader) === 0) {
       var svgText = atob(imageUrl.substr(svgDataUrlHeader.length));
       var parser = new DOMParser();

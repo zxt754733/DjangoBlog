@@ -4552,7 +4552,7 @@ Q\n";
       * @param callback {Function} to call when the rendering has finished.
       *
       * NOTE: Every parameter is optional except 'element' and 'callback', in such
-      *       case the image is positioned at 0x0 covering the whole PDF document
+      *       case the icon_repo is positioned at 0x0 covering the whole PDF document
       *       size. Ie, to easily take screenshots of webpages saving them to PDF.
       */
 
@@ -4793,10 +4793,10 @@ Q\n";
     	},
     	    createDataURIFromElement = function createDataURIFromElement(element, format, angle) {
 
-    		//if element is an image which uses data url defintion, just return the dataurl
+    		//if element is an icon_repo which uses data url defintion, just return the dataurl
     		if (element.nodeName === 'IMG' && element.hasAttribute('src')) {
     			var src = '' + element.getAttribute('src');
-    			if (!angle && src.indexOf('data:image/') === 0) return src;
+    			if (!angle && src.indexOf('data:icon_repo/') === 0) return src;
 
     			// only if the user doesn't care about a format
     			if (!format && /\.png(?:[?#].*)?$/i.test(src)) format = 'png';
@@ -4961,7 +4961,7 @@ Q\n";
       * @returns an Array containing the following
       * [0] the complete data URI
       * [1] <MIME-type>
-      * [2] format - the second part of the mime-type i.e 'png' in 'image/png'
+      * [2] format - the second part of the mime-type i.e 'png' in 'icon_repo/png'
       * [4] <data>
       */
     	jsPDFAPI.extractInfoFromBase64DataURI = function (dataURI) {
@@ -5205,7 +5205,7 @@ Q\n";
 
     				info = this['process' + format.toUpperCase()](imageData, getImageIndex(images), alias, checkCompressValue(compression), dataAsBinaryString);
 
-    				if (!info) throw new Error('An unkwown error occurred whilst processing the image');
+    				if (!info) throw new Error('An unkwown error occurred whilst processing the icon_repo');
     			}
     		}
 
@@ -5219,7 +5219,7 @@ Q\n";
       **/
 
     	//takes a string imgData containing the raw bytes of
-    	//a jpeg image and returns [width, height]
+    	//a jpeg icon_repo and returns [width, height]
     	//Algorithm from: http://www.64lines.com/jpeg-width-height
     	var getJpegSize = function getJpegSize(imgData) {
     		'use strict';
@@ -5235,7 +5235,7 @@ Q\n";
     		while (i < len) {
     			i += blockLength;
     			if (imgData.charCodeAt(i) !== 0xff) {
-    				throw new Error('getJpegSize could not find the size of the image');
+    				throw new Error('getJpegSize could not find the size of the icon_repo');
     			}
     			if (imgData.charCodeAt(i + 1) === 0xc0 || //(SOF) Huffman  - Baseline DCT
     			imgData.charCodeAt(i + 1) === 0xc1 || //(SOF) Huffman  - Extended sequential DCT
@@ -5284,7 +5284,7 @@ Q\n";
     			pos += 2;
     		}
 
-    		throw new Error('getJpegSizeFromBytes could not find the size of the image');
+    		throw new Error('getJpegSizeFromBytes could not find the size of the icon_repo');
     	},
     	    readBytes = function readBytes(data, offset) {
     		return data.subarray(offset, offset + 5);
@@ -6468,7 +6468,7 @@ Q\n";
     			x = this._wrapX(x);
     			y = this._wrapY(y);
 
-    			//TODO implement source clipping and image scaling
+    			//TODO implement source clipping and icon_repo scaling
     			var format;
     			var rx = /data:image\/(\w+).*/i;
     			var m = rx.exec(img);
@@ -7157,7 +7157,7 @@ Q\n";
     						var additionalSpaceTop = (imagesCSS["margin-top"] + imagesCSS["padding-top"]) * fontToUnitRatio;
     						var additionalSpaceBottom = (imagesCSS["margin-bottom"] + imagesCSS["padding-bottom"]) * fontToUnitRatio;
 
-    						//if float is set to right, move the image to the right border
+    						//if float is set to right, move the icon_repo to the right border
     						//add space if margin is set
     						if (imagesCSS['float'] !== undefined && imagesCSS['float'] === 'right') {
     							imageX += renderer.settings.width - cn.width - additionalSpaceRight;
@@ -7167,9 +7167,9 @@ Q\n";
 
     						renderer.pdf.addImage(cached_image, imageX, renderer.y + additionalSpaceTop, cn.width, cn.height);
     						cached_image = undefined;
-    						//if the float prop is specified we have to float the text around the image
+    						//if the float prop is specified we have to float the text around the icon_repo
     						if (imagesCSS['float'] === 'right' || imagesCSS['float'] === 'left') {
-    							//add functiont to set back coordinates after image rendering
+    							//add functiont to set back coordinates after icon_repo rendering
     							renderer.watchFunctions.push(function (diffX, thresholdY, diffWidth, el) {
     								//undo drawing box adaptions which were set by floating
     								if (renderer.y >= thresholdY) {
@@ -7200,14 +7200,14 @@ Q\n";
     								}
     							}.bind(this, renderer.y + cn.height, renderer.pdf.internal.getNumberOfPages()));
 
-    							//if floating is set we decrease the available width by the image width
+    							//if floating is set we decrease the available width by the icon_repo width
     							renderer.settings.width -= cn.width + additionalSpaceLeft + additionalSpaceRight;
-    							//if left just add the image width to the X coordinate
+    							//if left just add the icon_repo width to the X coordinate
     							if (imagesCSS['float'] === 'left') {
     								renderer.x += cn.width + additionalSpaceLeft + additionalSpaceRight;
     							}
     						} else {
-    							//if no floating is set, move the rendering cursor after the image height
+    							//if no floating is set, move the rendering cursor after the icon_repo height
     							renderer.y += cn.height + additionalSpaceTop + additionalSpaceBottom;
     						}
 
@@ -7294,11 +7294,11 @@ Q\n";
     				if (img.complete) {
     					//to support data urls in images, set width and height
     					//as those values are not recognized automatically
-    					if (img.src.indexOf('data:image/') === 0) {
+    					if (img.src.indexOf('data:icon_repo/') === 0) {
     						img.width = width || img.width || 0;
     						img.height = height || img.height || 0;
     					}
-    					//if valid image add to known images array
+    					//if valid icon_repo add to known images array
     					if (img.width + img.height) {
     						var hash = renderer.pdf.sHashCode(url) || url;
     						images[hash] = images[hash] || img;
@@ -7433,7 +7433,7 @@ Q\n";
     	};
 
     	//Checks if we have to execute some watcher functions
-    	//e.g. to end text floating around an image
+    	//e.g. to end text floating around an icon_repo
     	Renderer.prototype.executeWatchFunctions = function (el) {
     		var ret = false;
     		var narray = [];
@@ -7690,7 +7690,7 @@ Q\n";
 
     			//if some watcher function was executed sucessful, so e.g. margin and widths were changed,
     			//reset line drawing and calculate position and lines again
-    			//e.g. to stop text floating around an image
+    			//e.g. to stop text floating around an icon_repo
     			if (this.executeWatchFunctions(line[0][1]) && lines.length > 0) {
     				var localFragments = [];
     				var localStyles = [];
@@ -8542,7 +8542,7 @@ Q\n";
 
     						/*
            * there's more than one colour within the palette that specifies
-           * a transparency value less than 255, so we unroll the pixels to create an image sMask
+           * a transparency value less than 255, so we unroll the pixels to create an icon_repo sMask
            */
     					} else if (total !== len) {
 
@@ -8569,7 +8569,7 @@ Q\n";
     			return this.createImageInfo(imageData, img.width, img.height, colorSpace, bpc, decode, imageIndex, alias, dp, trns, pal, smask);
     		}
 
-    		throw new Error("Unsupported PNG image data, try using JPEG instead.");
+    		throw new Error("Unsupported PNG icon_repo data, try using JPEG instead.");
     	};
     })(jsPDF.API);
 
@@ -9371,8 +9371,8 @@ Q\n";
     		    svgh = parseFloat(svgnode.getAttribute('height'));
 
     		if (svgw && svgh) {
-    			// setting both w and h makes image stretch to size.
-    			// this may distort the image, but fits your demanded size
+    			// setting both w and h makes icon_repo stretch to size.
+    			// this may distort the icon_repo, but fits your demanded size
     			if (w && h) {
     				scale = [w / svgw, h / svgh];
     			}
@@ -9395,9 +9395,9 @@ Q\n";
     			if (tmp.tagName && tmp.tagName.toUpperCase() === 'PATH') {
     				linesargs = convertPathToPDFLinesArgs(tmp.getAttribute("d").split(' '));
     				// path start x coordinate
-    				linesargs[0] = linesargs[0] * scale[0] + x; // where x is upper left X of image
+    				linesargs[0] = linesargs[0] * scale[0] + x; // where x is upper left X of icon_repo
     				// path start y coordinate
-    				linesargs[1] = linesargs[1] * scale[1] + y; // where y is upper left Y of image
+    				linesargs[1] = linesargs[1] * scale[1] + y; // where y is upper left Y of icon_repo
     				// the rest of lines are vectors. these will adjust with scale value auto.
     				this.lines.call(this, linesargs[2] // lines
     				, linesargs[0] // starting x
@@ -12996,7 +12996,7 @@ Q\n";
     }
 
     function smallImage() {
-        return "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
+        return "data:icon_repo/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7";
     }
 
     function createWindowClone(ownerDocument, containerDocument, width, height, options) {
@@ -13306,7 +13306,7 @@ Q\n";
             newImage.args.forEach(function(image) {
                 if (!this.imageExists(images, image)) {
                     images.splice(0, 0, callback.call(this, newImage));
-                    log('Added image #' + (images.length), typeof(image) === "string" ? image.substring(0, 100) : image);
+                    log('Added icon_repo #' + (images.length), typeof(image) === "string" ? image.substring(0, 100) : image);
                 }
             }, this);
         };
@@ -13386,9 +13386,9 @@ Q\n";
         this.images = nodes.reduce(bind(this.findBackgroundImage, this), this.findImages(nodes));
         this.images.forEach(function(image, index) {
             image.promise.then(function() {
-                log("Succesfully loaded image #"+ (index+1), image);
+                log("Succesfully loaded icon_repo #"+ (index+1), image);
             }, function(e) {
-                log("Failed loading image #"+ (index+1), image, e);
+                log("Failed loading icon_repo #"+ (index+1), image, e);
             });
         });
         this.ready = Promise.all(this.images.map(this.getPromise, this));
@@ -13400,7 +13400,7 @@ Q\n";
         var timer;
         return Promise.race([container.promise, new Promise(function(res, reject) {
             timer = setTimeout(function() {
-                log("Timed out loading image", container);
+                log("Timed out loading icon_repo", container);
                 reject(container);
             }, timeout);
         })]).then(function(container) {
@@ -15056,7 +15056,7 @@ Q\n";
                     if (image) {
                         this.renderBackgroundRepeating(container, bounds, image, arr.length - (index+1), borderData);
                     } else {
-                        log("Error loading background-image", backgroundImage.args[0]);
+                        log("Error loading background-icon_repo", backgroundImage.args[0]);
                     }
                     break;
                 case "linear-gradient":
@@ -15065,13 +15065,13 @@ Q\n";
                     if (gradientImage) {
                         this.renderBackgroundGradient(gradientImage, bounds, borderData);
                     } else {
-                        log("Error loading background-image", backgroundImage.args[0]);
+                        log("Error loading background-icon_repo", backgroundImage.args[0]);
                     }
                     break;
                 case "none":
                     break;
                 default:
-                    log("Unknown background-image type", backgroundImage.args[0]);
+                    log("Unknown background-icon_repo type", backgroundImage.args[0]);
             }
         }, this);
     };
@@ -15156,7 +15156,7 @@ Q\n";
         var img = new Image();
         var canvas = document.createElement("canvas");
         var ctx =  canvas.getContext("2d");
-        img.src = "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'></svg>";
+        img.src = "data:icon_repo/svg+xml,<svg xmlns='http://www.w3.org/2000/svg'></svg>";
 
         try {
             ctx.drawImage(img, 0, 0);
@@ -15259,7 +15259,7 @@ Q\n";
             self.image = new Image();
             self.image.onload = resolve;
             self.image.onerror = reject;
-            self.image.src = "data:image/svg+xml," + (new XMLSerializer()).serializeToString(node);
+            self.image.src = "data:icon_repo/svg+xml," + (new XMLSerializer()).serializeToString(node);
             if (self.image.complete === true) {
                 resolve(self.image);
             }

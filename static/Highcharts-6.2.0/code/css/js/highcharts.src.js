@@ -6522,17 +6522,17 @@
 		    },
 
 		    /**
-		     * Display an image.
+		     * Display an icon_repo.
 		     *
-		     * @sample highcharts/members/renderer-image-on-chart/
-		     *         Add an image in a chart
-		     * @sample highcharts/members/renderer-image/
-		     *         Add an image independent of a chart
+		     * @sample highcharts/members/renderer-icon_repo-on-chart/
+		     *         Add an icon_repo in a chart
+		     * @sample highcharts/members/renderer-icon_repo/
+		     *         Add an icon_repo independent of a chart
 		     *
-		     * @function Highcharts.SVGRenderer#image
+		     * @function Highcharts.SVGRenderer#icon_repo
 		     *
 		     * @param {string} src
-		     *        The image source.
+		     *        The icon_repo source.
 		     *
 		     * @param {number} [x]
 		     *        The X position.
@@ -6541,14 +6541,14 @@
 		     *        The Y position.
 		     *
 		     * @param {number} [width]
-		     *        The image width. If omitted, it defaults to the image file width.
+		     *        The icon_repo width. If omitted, it defaults to the icon_repo file width.
 		     *
 		     * @param {number} [height]
-		     *        The image height. If omitted it defaults to the image file
+		     *        The icon_repo height. If omitted it defaults to the icon_repo file
 		     *        height.
 		     *
 		     * @param {Function} [onload]
-		     *        Event handler for image load.
+		     *        Event handler for icon_repo load.
 		     *
 		     * @return {Highcharts.SVGElement}
 		     *         The generated wrapper element.
@@ -6591,12 +6591,12 @@
 
 		        // Add load event if supplied
 		        if (onload) {
-		            // We have to use a dummy HTML image since IE support for SVG image
+		            // We have to use a dummy HTML icon_repo since IE support for SVG icon_repo
 		            // load events is very buggy. First set a transparent src, wait for
-		            // dummy to load, and then add the real src to the SVG image.
+		            // dummy to load, and then add the real src to the SVG icon_repo.
 		            setSVGImageSource(
 		                elemWrapper.element,
-		                'data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' /* eslint-disable-line */
+		                'data:icon_repo/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==' /* eslint-disable-line */
 		            );
 		            dummy = new win.Image();
 		            addEvent(dummy, 'load', onDummyLoad);
@@ -6687,12 +6687,12 @@
 
 		            imageSrc = symbol.match(imageRegex)[1];
 
-		            // Create the image synchronously, add attribs async
+		            // Create the icon_repo synchronously, add attribs async
 		            obj = this.image(imageSrc);
 
-		            // The image width is not always the same as the symbol width. The
-		            // image may be centered within the symbol, as is the case when
-		            // image shapes are used as label backgrounds, for example in flags.
+		            // The icon_repo width is not always the same as the symbol width. The
+		            // icon_repo may be centered within the symbol, as is the case when
+		            // icon_repo shapes are used as label backgrounds, for example in flags.
 		            obj.imgwidth = pick(
 		                symbolSizes[imageSrc] && symbolSizes[imageSrc].width,
 		                options && options.width
@@ -6712,8 +6712,8 @@
 		            };
 
 		            /**
-		             * Width and height setters that take both the image's physical size
-		             * and the label size into consideration, and translates the image
+		             * Width and height setters that take both the icon_repo's physical size
+		             * and the label size into consideration, and translates the icon_repo
 		             * to center within the label.
 		             */
 		            each(['width', 'height'], function (key) {
@@ -6746,18 +6746,18 @@
 		            if (defined(obj.imgwidth) && defined(obj.imgheight)) {
 		                centerImage();
 		            } else {
-		                // Initialize image to be 0 size so export will still function
+		                // Initialize icon_repo to be 0 size so export will still function
 		                // if there's no cached sizes.
 		                obj.attr({ width: 0, height: 0 });
 
-		                // Create a dummy JavaScript image to get the width and height.
+		                // Create a dummy JavaScript icon_repo to get the width and height.
 		                createElement('img', {
 		                    onload: function () {
 
 		                        var chart = charts[ren.chartIndex];
 
 		                        // Special case for SVGs on IE11, the width is not
-		                        // accessible until the image is part of the DOM
+		                        // accessible until the icon_repo is part of the DOM
 		                        // (#2854).
 		                        if (this.width === 0) {
 		                            css(this, {
@@ -6767,7 +6767,7 @@
 		                            doc.body.appendChild(this);
 		                        }
 
-		                        // Center the image
+		                        // Center the icon_repo
 		                        symbolSizes[imageSrc] = { // Cache for next
 		                            width: this.width,
 		                            height: this.height
@@ -27269,7 +27269,7 @@
 		                // Skip undefined positions for keys
 		                if (!keys || options[i] !== undefined) {
 		                    if (pointArrayMap[j].indexOf('.') > 0) {
-		                        // Handle nested keys, e.g. ['color.pattern.image']
+		                        // Handle nested keys, e.g. ['color.pattern.icon_repo']
 		                        // Avoid function call unless necessary.
 		                        H.Point.prototype.setNestedProperty(
 		                            ret, options[i], pointArrayMap[j]
@@ -28552,7 +28552,7 @@
 		         */
 
 		        /**
-		         * Image markers only. Set the image width explicitly. When using this
+		         * Image markers only. Set the icon_repo width explicitly. When using this
 		         * option, a `width` must also be set.
 		         *
 		         * @sample {highcharts} highcharts/plotoptions/series-marker-width-height/
@@ -28571,7 +28571,7 @@
 		         * "circle", "square", "diamond", "triangle" and "triangle-down".
 		         *
 		         * Additionally, the URL to a graphic can be given on this form:
-		         * "url(graphic.png)". Note that for the image to be applied to exported
+		         * "url(graphic.png)". Note that for the icon_repo to be applied to exported
 		         * charts, its URL needs to be accessible by the export server.
 		         *
 		         * Custom callbacks for symbol path generation can also be added to
@@ -28610,7 +28610,7 @@
 		        radius: 4,
 
 		        /**
-		         * Image markers only. Set the image width explicitly. When using this
+		         * Image markers only. Set the icon_repo width explicitly. When using this
 		         * option, a `height` must also be set.
 		         *
 		         * @sample {highcharts} highcharts/plotoptions/series-marker-width-height/

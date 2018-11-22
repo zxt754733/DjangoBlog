@@ -640,7 +640,7 @@ var HighchartsConfig = {
             'description': 'Series consists of flags marking events or points of interests'
         },
         'Exporting': {
-            'description': 'For saving the chart to an image'
+            'description': 'For saving the chart to an icon_repo'
         },
         'Data': {
             'description': 'Intended to ease the common process of loading data from CSV, HTML tables and even Google Spreadsheets'

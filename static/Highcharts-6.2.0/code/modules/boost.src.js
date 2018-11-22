@@ -224,7 +224,7 @@
 		/**
 		 * Time the WebGL to SVG buffer copy
 		 *
-		 * After rendering, the result is copied to an image which is injected
+		 * After rendering, the result is copied to an icon_repo which is injected
 		 * into the SVG.
 		 *
 		 * If this property is set to true, the time it takes for the buffer copy
@@ -1695,7 +1695,7 @@
 		                    // The root cause is that the coordinate system is flipped.
 		                    // In other words, instead of [0,0] being top-left, it's
 		                    // bottom-right. This causes a vertical and horizontal flip
-		                    // in the resulting image, making it rotated 180 degrees.
+		                    // in the resulting icon_repo, making it rotated 180 degrees.
 		                    if (series.type === 'heatmap' && chart.inverted) {
 		                        shapeArgs.x = xAxis.len - shapeArgs.x;
 		                        shapeArgs.y = yAxis.len - shapeArgs.y;
@@ -2673,7 +2673,7 @@
 		    if (!target.renderTarget) {
 		        target.canvas = mainCanvas;
 
-		        // Fall back to image tag if foreignObject isn't supported,
+		        // Fall back to icon_repo tag if foreignObject isn't supported,
 		        // or if we're exporting.
 		        if (chart.renderer.forExport || !foSupported) {
 		            target.renderTarget = chart.renderer.image(
@@ -3525,7 +3525,7 @@
 		     */
 		    H.Chart.prototype.callbacks.push(function (chart) {
 
-		        /* Convert chart-level canvas to image */
+		        /* Convert chart-level canvas to icon_repo */
 		        function canvasToSVG() {
 		            if (chart.ogl && chart.isChartSeriesBoosting()) {
 		                chart.ogl.render(chart);

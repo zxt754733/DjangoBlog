@@ -314,7 +314,7 @@ Highcharts.Point.prototype = {
                 // Skip undefined positions for keys
                 if (!keys || options[i] !== undefined) {
                     if (pointArrayMap[j].indexOf('.') > 0) {
-                        // Handle nested keys, e.g. ['color.pattern.image']
+                        // Handle nested keys, e.g. ['color.pattern.icon_repo']
                         // Avoid function call unless necessary.
                         H.Point.prototype.setNestedProperty(
                             ret, options[i], pointArrayMap[j]
